@@ -64,4 +64,16 @@ python scripts/audit_bandung.py
 pytest
 ```
 
+The E00 audit command reads, but never changes, the raw Bandung snapshot. It writes the
+row-preserving `data/processed/bandung_observed_v1.csv`, publication-ready summaries to
+`results/tables/`, machine-readable configuration and counts to `results/metrics/`, and
+route-ratio and stress distributions as SVG files in `results/figures/`. Every excluded
+observation has one or more explicit reasons; its directed `(u, v, key)` identity and
+observed-data provenance remain in the output.
+
+E00 reports both moderate (`0.7–1.5`) and strict (`0.8–1.25`) route-ratio QC profiles,
+using the moderate profile for `bandung_observed_v1.csv`. It also checks raw-file hashes,
+schema and edge/time-grid integrity, summarizes temporal log-stress variability, and
+compares the sampled road-class distribution with all directed edges in the full snapshot.
+
 See `AGENTS.md` for Codex/agent instructions and `docs/experiment_registry.md` for the planned experiment IDs.

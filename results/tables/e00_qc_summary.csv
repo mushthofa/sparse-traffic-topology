@@ -1,0 +1,9 @@
+metric,value
+observations_total,2100
+observations_included,1661
+observations_excluded,439
+unique_directed_edges,100
+time_states,21
+self_loop_observations,21
+duplicate_edge_time_observations,0
+status_ok_observations,2100
