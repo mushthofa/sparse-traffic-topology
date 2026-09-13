@@ -1,0 +1,46 @@
+seed: 42
+
+bandung:
+  sampled_edges: data/raw/bandung/sampled_edges.csv
+  google_samples: data/raw/bandung/google_edge_samples.csv
+  full_dynamic_gz: data/raw/bandung/full_dynamic_edges.csv.gz
+  graphml_gz: data/raw/bandung/bandung_itb_rect_with_dynamic.graphml.xml.gz
+  time_labels:
+    - mon_01
+    - mon_07
+    - mon_17
+    - tue_01
+    - tue_07
+    - tue_17
+    - wed_01
+    - wed_07
+    - wed_17
+    - thu_01
+    - thu_07
+    - thu_17
+    - fri_01
+    - fri_07
+    - fri_17
+    - sat_01
+    - sat_07
+    - sat_17
+    - sun_01
+    - sun_07
+    - sun_17
+  qc:
+    remove_self_loops: true
+    route_ratio_soft_min: 0.7
+    route_ratio_soft_max: 1.5
+
+reconstruction:
+  lambda_spatial: 1.0
+  lambda_temporal: 1.0
+  lambda_baseline: 0.1
+
+ph:
+  max_dimension: 1
+  homology_coeff_field: 2
+
+validation:
+  train_edge_counts: [20, 40, 60, 80]
+  repeats: 20
