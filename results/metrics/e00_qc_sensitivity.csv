@@ -1,0 +1,4 @@
+profile,ratio_min,ratio_max,total_rows,retained_rows,excluded_rows,excluded_status,excluded_missing_or_nonfinite_ratio,excluded_ratio_below_min,excluded_ratio_above_max
+very_strict,0.8,1.25,2100,1596,504,0,0,147,357
+strict,0.7,1.5,2100,1661,439,0,0,126,313
+moderate,0.5,2.0,2100,1743,357,0,0,63,294
