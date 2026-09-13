@@ -9,6 +9,11 @@ import pandas as pd
 
 EDGE_KEY = ["u", "v", "key"]
 OBSERVATION_KEY = [*EDGE_KEY, "timestamp_label"]
+QC_RATIO_PROFILES: dict[str, tuple[float, float]] = {
+    "very_strict": (0.7, 1.5),
+    "strict": (0.5, 2.0),
+    "moderate": (0.8, 1.25),
+}
 
 
 def add_route_quality(df: pd.DataFrame, sigma_q: float = 0.5) -> pd.DataFrame:
@@ -169,3 +174,28 @@ def road_class_representativeness(
     report["share_difference"] = report["sample_share"] - report["population_share"]
     report["representation_ratio"] = report["sample_share"] / report["population_share"]
     return report
+
+def summarize_edge_temporal_variability(df: pd.DataFrame) -> pd.DataFrame:
+    """Summarize Google travel-time variability for each directed sampled road."""
+    identity = ["edge_id", "u", "v", "key"]
+
+    grouped = df.groupby(identity, sort=True, dropna=False)["google_time_s"]
+
+    result = grouped.agg(
+        observation_count="size",
+        unique_google_times="nunique",
+        google_time_mean_s="mean",
+        google_time_sd_s="std",
+        google_time_min_s="min",
+        google_time_max_s="max",
+    ).reset_index()
+
+    result["google_time_cv"] = (
+        result["google_time_sd_s"] / result["google_time_mean_s"]
+    )
+    result["google_time_range_s"] = (
+        result["google_time_max_s"] - result["google_time_min_s"]
+    )
+    result["zero_variation"] = result["unique_google_times"].le(1)
+
+    return result

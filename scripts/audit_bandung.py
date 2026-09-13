@@ -18,6 +18,7 @@ from traffic_thi.quality import (
     road_class_representativeness,
     temporal_variability,
 )
+from traffic_thi.quality import summarize_edge_temporal_variability
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -99,6 +100,7 @@ def main() -> None:
     )
     primary_profile = qc["primary_profile"]
     audited = audited_profiles[primary_profile]
+    
 
     metric_dir = ROOT / "results/metrics"
     table_dir = ROOT / "results/tables"
@@ -107,6 +109,12 @@ def main() -> None:
     for directory in (metric_dir, table_dir, figure_dir, processed_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
+    edge_variability = summarize_edge_temporal_variability(df)
+    
+    edge_variability.to_csv(
+        table_dir / "e00_edge_temporal_variability.csv",
+        index=False,
+    )
     reason_table = exclusion_counts(audited)
     reason_table.to_csv(table_dir / "e00_exclusion_report.csv", index=False)
     sensitivity.to_csv(table_dir / "e00_qc_sensitivity.csv", index=False)
@@ -138,30 +146,41 @@ def main() -> None:
     representativeness.to_csv(table_dir / "e00_road_class_representativeness.csv", index=False)
 
     summary = pd.DataFrame(
-        {
-            "metric": [
-                "observations_total",
-                "observations_included",
-                "observations_excluded",
-                "unique_directed_edges",
-                "time_states",
-                "self_loop_observations",
-                "duplicate_edge_time_observations",
-                "status_ok_observations",
-            ],
-            "value": [
-                len(audited),
-                int(audited["qc_included"].sum()),
-                int((~audited["qc_included"]).sum()),
-                audited[["u", "v", "key"]].drop_duplicates().shape[0],
-                audited["timestamp_label"].nunique(),
-                int(audited["u"].eq(audited["v"]).sum()),
-                int(audited.duplicated(["u", "v", "key", "timestamp_label"], keep=False).sum()),
-                int(audited["status"].eq("ok").sum()),
+    {
+        "metric": [
+            "observations_total",
+            "observations_included",
+            "observations_excluded",
+            "unique_directed_edges",
+            "time_states",
+            "self_loop_observations",
+            "duplicate_edge_time_observations",
+            "status_ok_observations",
+            "zero_temporal_variation_edges",
+            "temporally_variable_edges",
+        ],
+        "value": [
+            len(audited),
+            int(audited["qc_included"].sum()),
+            int((~audited["qc_included"]).sum()),
+            audited[["u", "v", "key"]].drop_duplicates().shape[0],
+            audited["timestamp_label"].nunique(),
+            int(audited["u"].eq(audited["v"]).sum()),
+            int(
+                audited.duplicated(
+                    ["u", "v", "key", "timestamp_label"], keep=False
+                ).sum()
+            ),
+            int(audited["status"].eq("ok").sum()),
+            zero_variation_edges,
+            temporally_variable_edges,
             ],
         }
     )
     summary.to_csv(table_dir / "e00_qc_summary.csv", index=False)
+
+    zero_variation_edges = int(edge_variability["zero_variation"].sum())
+    temporally_variable_edges = int((~edge_variability["zero_variation"]).sum())
 
     metrics = {
         "experiment_id": "E00",
@@ -173,6 +192,9 @@ def main() -> None:
             "pandas": pd.__version__,
         },
         **dict(zip(summary["metric"], summary["value"], strict=True)),
+        "zero_temporal_variation_edges": zero_variation_edges,
+        "temporally_variable_edges": temporally_variable_edges,
+        "fraction_zero_temporal_variation_edges": zero_variation_edges / len(edge_variability),
         "exclusion_reason_counts": dict(
             zip(reason_table["reason"], reason_table["observation_count"], strict=True)
         ),
