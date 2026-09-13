@@ -48,7 +48,7 @@ def _join_reasons(reason_masks: Iterable[tuple[str, pd.Series]], index: pd.Index
     for reason, mask in reason_masks:
         selected = mask.fillna(True)
         reasons.loc[selected] = reasons.loc[selected].map(
-            lambda existing: f"{existing};{reason}" if existing else reason
+            lambda existing, reason=reason: f"{existing};{reason}" if existing else reason
         )
     return reasons
 
