@@ -42,3 +42,4 @@ paper/*.pdf
 Thumbs.db
 .vscode/
 .idea/
+*:Zone.Identifier
