@@ -1,0 +1,29 @@
+{
+  "configuration": {
+    "remove_self_loops": true,
+    "route_ratio_soft_max": 1.5,
+    "route_ratio_soft_min": 0.7
+  },
+  "duplicate_edge_time_observations": 0,
+  "exclusion_reason_counts": {
+    "invalid_google_distance": 21,
+    "invalid_google_time": 21,
+    "route_ratio_above_max": 313,
+    "route_ratio_below_min": 105,
+    "self_loop": 21
+  },
+  "experiment_id": "E00",
+  "observations_excluded": 439,
+  "observations_included": 1661,
+  "observations_total": 2100,
+  "seed": 42,
+  "self_loop_observations": 21,
+  "software": {
+    "pandas": "3.0.5",
+    "python": "3.14.4"
+  },
+  "source": "data/raw/bandung/google_edge_samples.csv",
+  "status_ok_observations": 2100,
+  "time_states": 21,
+  "unique_directed_edges": 100
+}
