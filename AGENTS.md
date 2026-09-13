@@ -34,6 +34,14 @@ Develop a reproducible applied-mathematics/network-science paper on sparse urban
 - Use pandas/NumPy/SciPy/NetworkX for data/graph work; GUDHI for PH unless a benchmark justifies another library.
 - Avoid notebook-only helper functions.
 
+## Generated artifacts
+
+- Do not include new binary-generated artifacts in routine PRs unless explicitly requested.
+- Prefer CSV/JSON for tabular experiment results.
+- Prefer SVG for reviewable figures where practical.
+- Keep committed Jupyter notebooks free of execution outputs.
+- Parquet, PNG, PDF, checkpoints, and other binary outputs should be reproducible from committed code/config and stored as external/CI artifacts or Git LFS when required.
+
 ## Before finishing any task
 Run:
 
