@@ -98,3 +98,74 @@ def exclusion_counts(df: pd.DataFrame) -> pd.DataFrame:
     excluded = df.loc[~df["qc_included"], "qc_exclusion_reasons"]
     counts = excluded.str.split(";").explode().value_counts().sort_index()
     return counts.rename_axis("reason").reset_index(name="observation_count")
+
+
+def qc_sensitivity(
+    df: pd.DataFrame,
+    profiles: dict[str, dict[str, float]],
+    *,
+    remove_self_loops: bool = True,
+) -> tuple[dict[str, pd.DataFrame], pd.DataFrame]:
+    """Apply named QC profiles and summarize their inclusion sensitivity."""
+    audited: dict[str, pd.DataFrame] = {}
+    records: list[dict[str, object]] = []
+    for name, bounds in profiles.items():
+        result = apply_observation_qc(
+            df,
+            route_ratio_min=bounds["route_ratio_min"],
+            route_ratio_max=bounds["route_ratio_max"],
+            remove_self_loops=remove_self_loops,
+        )
+        result["qc_profile"] = name
+        audited[name] = result
+        counts = exclusion_counts(result).set_index("reason")["observation_count"].to_dict()
+        records.append(
+            {
+                "profile": name,
+                **bounds,
+                "included_observations": int(result["qc_included"].sum()),
+                "excluded_observations": int((~result["qc_included"]).sum()),
+                **{f"excluded_{reason}": int(count) for reason, count in counts.items()},
+            }
+        )
+    return audited, pd.DataFrame.from_records(records).fillna(0)
+
+
+def temporal_variability(df: pd.DataFrame) -> pd.DataFrame:
+    """Summarize included log-stress variation for every observed time state."""
+    included = df.loc[df["qc_included"] & df["log_stress"].notna()]
+    return (
+        included.groupby(["timestamp_label", "day_name", "period"], sort=False)["log_stress"]
+        .agg(
+            observation_count="size",
+            mean="mean",
+            median="median",
+            standard_deviation="std",
+            q05=lambda values: values.quantile(0.05),
+            q95=lambda values: values.quantile(0.95),
+        )
+        .reset_index()
+    )
+
+
+def road_class_representativeness(
+    sampled_edges: pd.DataFrame, population_edges: pd.DataFrame
+) -> pd.DataFrame:
+    """Compare sampled and full-network directed-edge highway-class shares."""
+    sample = sampled_edges[list(EDGE_KEY) + ["highway"]].drop_duplicates(EDGE_KEY)
+    population = population_edges[list(EDGE_KEY) + ["highway"]].drop_duplicates(EDGE_KEY)
+    sample_counts = sample["highway"].fillna("missing").value_counts()
+    population_counts = population["highway"].fillna("missing").value_counts()
+    classes = population_counts.index.union(sample_counts.index).sort_values()
+    report = pd.DataFrame(
+        {
+            "highway": classes,
+            "population_edge_count": population_counts.reindex(classes, fill_value=0).to_numpy(),
+            "sample_edge_count": sample_counts.reindex(classes, fill_value=0).to_numpy(),
+        }
+    )
+    report["population_share"] = report["population_edge_count"] / len(population)
+    report["sample_share"] = report["sample_edge_count"] / len(sample)
+    report["share_difference"] = report["sample_share"] - report["population_share"]
+    report["representation_ratio"] = report["sample_share"] / report["population_share"]
+    return report

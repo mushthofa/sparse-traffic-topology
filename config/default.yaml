@@ -29,8 +29,14 @@ bandung:
     - sun_17
   qc:
     remove_self_loops: true
-    route_ratio_soft_min: 0.7
-    route_ratio_soft_max: 1.5
+    primary_profile: moderate
+    profiles:
+      moderate:
+        route_ratio_min: 0.7
+        route_ratio_max: 1.5
+      strict:
+        route_ratio_min: 0.8
+        route_ratio_max: 1.25
 
 reconstruction:
   lambda_spatial: 1.0

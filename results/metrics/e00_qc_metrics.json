@@ -1,8 +1,17 @@
 {
   "configuration": {
-    "remove_self_loops": true,
-    "route_ratio_soft_max": 1.5,
-    "route_ratio_soft_min": 0.7
+    "primary_profile": "moderate",
+    "profiles": {
+      "moderate": {
+        "route_ratio_max": 1.5,
+        "route_ratio_min": 0.7
+      },
+      "strict": {
+        "route_ratio_max": 1.25,
+        "route_ratio_min": 0.8
+      }
+    },
+    "remove_self_loops": true
   },
   "duplicate_edge_time_observations": 0,
   "exclusion_reason_counts": {
@@ -13,9 +22,12 @@
     "self_loop": 21
   },
   "experiment_id": "E00",
+  "integrity_checks_passed": 12,
+  "integrity_checks_total": 12,
   "observations_excluded": 439,
   "observations_included": 1661,
   "observations_total": 2100,
+  "road_class_total_variation_distance": 0.05283011735596828,
   "seed": 42,
   "self_loop_observations": 21,
   "software": {
@@ -24,6 +36,7 @@
   },
   "source": "data/raw/bandung/google_edge_samples.csv",
   "status_ok_observations": 2100,
+  "temporal_median_log_stress_range": 0.14139569635609212,
   "time_states": 21,
   "unique_directed_edges": 100
 }
