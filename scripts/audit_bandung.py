@@ -22,6 +22,12 @@ from traffic_thi.quality import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def clean_svg(path: Path) -> None:
+    """Normalize generated SVG whitespace for clean, reproducible text diffs."""
+    lines = path.read_text(encoding="utf-8").splitlines()
+    path.write_text("\n".join(line.rstrip() for line in lines) + "\n", encoding="utf-8")
+
+
 def parse_args() -> argparse.Namespace:
     """Parse command-line options."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -38,6 +44,7 @@ def save_distribution(series: pd.Series, path: Path, xlabel: str, title: str) ->
     fig.tight_layout()
     fig.savefig(path, metadata={"Date": None})
     plt.close(fig)
+    clean_svg(path)
 
 
 def save_temporal_variability(report: pd.DataFrame, path: Path) -> None:
@@ -53,6 +60,7 @@ def save_temporal_variability(report: pd.DataFrame, path: Path) -> None:
     fig.tight_layout()
     fig.savefig(path, metadata={"Date": None})
     plt.close(fig)
+    clean_svg(path)
 
 
 def save_road_class_comparison(report: pd.DataFrame, path: Path) -> None:
@@ -65,6 +73,7 @@ def save_road_class_comparison(report: pd.DataFrame, path: Path) -> None:
     ax.figure.tight_layout()
     ax.figure.savefig(path, metadata={"Date": None})
     plt.close(ax.figure)
+    clean_svg(path)
 
 
 def main() -> None:
