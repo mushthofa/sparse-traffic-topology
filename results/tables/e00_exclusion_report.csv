@@ -1,0 +1,6 @@
+reason,observation_count
+invalid_google_distance,21
+invalid_google_time,21
+route_ratio_above_max,313
+route_ratio_below_min,105
+self_loop,21
