@@ -12,7 +12,6 @@ from traffic_thi.quality import (
     qc_sensitivity,
     road_class_representativeness,
     summarize_edge_temporal_variability,
-    summarize_qc_sensitivity,
     temporal_variability,
 )
 
@@ -153,22 +152,52 @@ def test_road_class_representativeness_preserves_directed_edges() -> None:
     assert report.loc["b", "sample_share"] == 0.5
 
 
+  
 def test_qc_sensitivity_profiles_and_exclusion_accounting() -> None:
     df = pd.DataFrame(
         {
+            "u": [1, 2, 3, 4, 5, 6, 7],
+            "v": [2, 3, 4, 5, 6, 7, 8],
+            "key": [0] * 7,
+            "timestamp_label": ["mon_01"] * 7,
             "google_distance_m": [49.0, 50.0, 70.0, 150.0, 200.0, 201.0, 100.0],
             "osm_length_m": [100.0] * 7,
+            "google_time_s": [20.0] * 7,
+            "osm_time_s": [10.0] * 7,
             "status": ["ok"] * 6 + ["error"],
         }
     )
-    result = summarize_qc_sensitivity(df).set_index("profile")
+
+    profiles = {
+        name: {
+            "route_ratio_min": lower,
+            "route_ratio_max": upper,
+        }
+        for name, (lower, upper) in QC_RATIO_PROFILES.items()
+    }
+
+    audited, summary = qc_sensitivity(df, profiles)
+    summary = summary.set_index("profile")
 
     assert QC_RATIO_PROFILES["strict"] == (0.7, 1.5)
     assert QC_RATIO_PROFILES["moderate"] == (0.5, 2.0)
-    assert result.loc["strict", "retained_rows"] == 2
-    assert result.loc["moderate", "retained_rows"] == 4
-    assert (result["retained_rows"] + result["excluded_rows"] == len(df)).all()
-    assert (result["excluded_status"] == 1).all()
+
+    assert int(summary.loc["strict", "included_observations"]) == 2
+    assert int(summary.loc["moderate", "included_observations"]) == 4
+
+    for name, result in audited.items():
+        included = int(result["qc_included"].sum())
+        excluded = int((~result["qc_included"]).sum())
+
+        assert included + excluded == len(df)
+        assert included == int(summary.loc[name, "included_observations"])
+        assert excluded == int(summary.loc[name, "excluded_observations"])
+
+    assert (
+        audited["strict"].loc[6, "qc_exclusion_reasons"]
+        == "status_not_ok"
+    )
+
 
 
 def test_edge_temporal_variability_preserves_directed_identity() -> None:

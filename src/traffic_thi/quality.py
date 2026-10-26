@@ -10,11 +10,10 @@ import pandas as pd
 EDGE_KEY = ["u", "v", "key"]
 OBSERVATION_KEY = [*EDGE_KEY, "timestamp_label"]
 QC_RATIO_PROFILES: dict[str, tuple[float, float]] = {
-    "very_strict": (0.7, 1.5),
-    "strict": (0.5, 2.0),
-    "moderate": (0.8, 1.25),
+    "very_strict": (0.8, 1.25),
+    "strict": (0.7, 1.5),
+    "moderate": (0.5, 2.0),
 }
-
 
 def add_route_quality(df: pd.DataFrame, sigma_q: float = 0.5) -> pd.DataFrame:
     """Add Google/OSM route-length ratio and a smooth confidence weight.

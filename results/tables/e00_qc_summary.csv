@@ -7,3 +7,5 @@ time_states,21
 self_loop_observations,21
 duplicate_edge_time_observations,0
 status_ok_observations,2100
+zero_temporal_variation_edges,53
+temporally_variable_edges,47

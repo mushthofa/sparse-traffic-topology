@@ -16,9 +16,9 @@ from traffic_thi.quality import (
     exclusion_counts,
     qc_sensitivity,
     road_class_representativeness,
+    summarize_edge_temporal_variability,
     temporal_variability,
 )
-from traffic_thi.quality import summarize_edge_temporal_variability
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -109,7 +109,7 @@ def main() -> None:
     for directory in (metric_dir, table_dir, figure_dir, processed_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
-    edge_variability = summarize_edge_temporal_variability(df)
+    edge_variability = summarize_edge_temporal_variability(frame)
     
     edge_variability.to_csv(
         table_dir / "e00_edge_temporal_variability.csv",
@@ -145,6 +145,10 @@ def main() -> None:
     representativeness = road_class_representativeness(sampled, population)
     representativeness.to_csv(table_dir / "e00_road_class_representativeness.csv", index=False)
 
+    
+    zero_variation_edges = int(edge_variability["zero_variation"].sum())
+    temporally_variable_edges = int((~edge_variability["zero_variation"]).sum())
+    
     summary = pd.DataFrame(
     {
         "metric": [
@@ -179,8 +183,6 @@ def main() -> None:
     )
     summary.to_csv(table_dir / "e00_qc_summary.csv", index=False)
 
-    zero_variation_edges = int(edge_variability["zero_variation"].sum())
-    temporally_variable_edges = int((~edge_variability["zero_variation"]).sum())
 
     metrics = {
         "experiment_id": "E00",
