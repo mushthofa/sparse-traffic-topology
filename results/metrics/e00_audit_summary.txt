@@ -1,0 +1,21 @@
+E00 Bandung data audit
+rows=2,100
+unique_edges=100
+time_states=21
+zero_variation_edges=53
+status counts:
+status
+ok    2100
+route_ratio quantiles:
+0.00     0.000000
+0.01     0.134916
+0.05     0.635382
+0.50     1.002552
+0.95     8.127202
+0.99    15.877099
+1.00    26.499982
+QC sensitivity (inclusive bounds):
+    profile  ratio_min  ratio_max  total_rows  retained_rows  excluded_rows  excluded_status  excluded_missing_or_nonfinite_ratio  excluded_ratio_below_min  excluded_ratio_above_max
+very_strict        0.8       1.25        2100           1596            504                0                                    0                       147                       357
+     strict        0.7       1.50        2100           1661            439                0                                    0                       126                       313
+   moderate        0.5       2.00        2100           1743            357                0                                    0                        63                       294

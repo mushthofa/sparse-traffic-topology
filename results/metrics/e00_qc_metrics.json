@@ -22,6 +22,7 @@
     "self_loop": 21
   },
   "experiment_id": "E00",
+  "fraction_zero_temporal_variation_edges": 0.53,
   "integrity_checks_passed": 12,
   "integrity_checks_total": 12,
   "observations_excluded": 439,
@@ -31,12 +32,14 @@
   "seed": 42,
   "self_loop_observations": 21,
   "software": {
-    "pandas": "3.0.5",
+    "pandas": "3.1.0",
     "python": "3.14.4"
   },
   "source": "data/raw/bandung/google_edge_samples.csv",
   "status_ok_observations": 2100,
   "temporal_median_log_stress_range": 0.14139569635609212,
+  "temporally_variable_edges": 47,
   "time_states": 21,
-  "unique_directed_edges": 100
+  "unique_directed_edges": 100,
+  "zero_temporal_variation_edges": 53
 }

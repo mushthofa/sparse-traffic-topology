@@ -1,14 +1,17 @@
+
 import numpy as np
 import pandas as pd
 import pytest
 
 from traffic_thi.quality import (
+    QC_RATIO_PROFILES,
     add_log_stress,
     add_route_quality,
     apply_observation_qc,
     exclusion_counts,
     qc_sensitivity,
     road_class_representativeness,
+    summarize_edge_temporal_variability,
     temporal_variability,
 )
 
@@ -71,6 +74,7 @@ def test_qc_retains_rows_and_reports_all_reasons() -> None:
     assert out.loc[1, "qc_exclusion_reasons"] == (
         "status_not_ok;duplicate_edge_time;route_ratio_above_max"
     )
+
     counts = exclusion_counts(out).set_index("reason")["observation_count"]
     assert counts["duplicate_edge_time"] == 2
     assert counts["self_loop"] == 1
@@ -88,7 +92,7 @@ def test_qc_sensitivity_strict_is_nested_within_moderate() -> None:
             "v": [2, 3],
             "key": [0, 0],
             "timestamp_label": ["mon_01", "mon_01"],
-            "google_distance_m": [140.0, 110.0],
+            "google_distance_m": [180.0, 110.0],
             "osm_length_m": [100.0, 100.0],
             "google_time_s": [20.0, 20.0],
             "osm_time_s": [10.0, 10.0],
@@ -98,12 +102,19 @@ def test_qc_sensitivity_strict_is_nested_within_moderate() -> None:
     profiles, summary = qc_sensitivity(
         df,
         {
-            "moderate": {"route_ratio_min": 0.7, "route_ratio_max": 1.5},
-            "strict": {"route_ratio_min": 0.8, "route_ratio_max": 1.25},
+            "strict": {
+                "route_ratio_min": 0.7,
+                "route_ratio_max": 1.5,
+            },
+            "moderate": {
+                "route_ratio_min": 0.5,
+                "route_ratio_max": 2.0,
+            },
         },
     )
-    assert profiles["moderate"]["qc_included"].sum() == 2
+
     assert profiles["strict"]["qc_included"].sum() == 1
+    assert profiles["moderate"]["qc_included"].sum() == 2
     assert summary.set_index("profile").loc["strict", "excluded_observations"] == 1
 
 
@@ -124,10 +135,86 @@ def test_temporal_variability_only_uses_included_values() -> None:
 
 def test_road_class_representativeness_preserves_directed_edges() -> None:
     population = pd.DataFrame(
-        {"u": [1, 2, 2], "v": [2, 1, 3], "key": [0, 0, 0], "highway": ["a", "a", "b"]}
+        {
+            "u": [1, 2, 2],
+            "v": [2, 1, 3],
+            "key": [0, 0, 0],
+            "highway": ["a", "a", "b"],
+        }
     )
     sampled = population.iloc[[0, 2]]
-    report = road_class_representativeness(sampled, population).set_index("highway")
+    report = road_class_representativeness(
+        sampled, population
+    ).set_index("highway")
+
     assert report["population_edge_count"].sum() == 3
     assert report["sample_edge_count"].sum() == 2
     assert report.loc["b", "sample_share"] == 0.5
+
+
+  
+def test_qc_sensitivity_profiles_and_exclusion_accounting() -> None:
+    df = pd.DataFrame(
+        {
+            "u": [1, 2, 3, 4, 5, 6, 7],
+            "v": [2, 3, 4, 5, 6, 7, 8],
+            "key": [0] * 7,
+            "timestamp_label": ["mon_01"] * 7,
+            "google_distance_m": [49.0, 50.0, 70.0, 150.0, 200.0, 201.0, 100.0],
+            "osm_length_m": [100.0] * 7,
+            "google_time_s": [20.0] * 7,
+            "osm_time_s": [10.0] * 7,
+            "status": ["ok"] * 6 + ["error"],
+        }
+    )
+
+    profiles = {
+        name: {
+            "route_ratio_min": lower,
+            "route_ratio_max": upper,
+        }
+        for name, (lower, upper) in QC_RATIO_PROFILES.items()
+    }
+
+    audited, summary = qc_sensitivity(df, profiles)
+    summary = summary.set_index("profile")
+
+    assert QC_RATIO_PROFILES["strict"] == (0.7, 1.5)
+    assert QC_RATIO_PROFILES["moderate"] == (0.5, 2.0)
+
+    assert int(summary.loc["strict", "included_observations"]) == 2
+    assert int(summary.loc["moderate", "included_observations"]) == 4
+
+    for name, result in audited.items():
+        included = int(result["qc_included"].sum())
+        excluded = int((~result["qc_included"]).sum())
+
+        assert included + excluded == len(df)
+        assert included == int(summary.loc[name, "included_observations"])
+        assert excluded == int(summary.loc[name, "excluded_observations"])
+
+    assert (
+        audited["strict"].loc[6, "qc_exclusion_reasons"]
+        == "status_not_ok"
+    )
+
+
+
+def test_edge_temporal_variability_preserves_directed_identity() -> None:
+    df = pd.DataFrame(
+        {
+            "edge_id": ["a", "a", "a", "b", "b"],
+            "u": [1, 1, 1, 2, 2],
+            "v": [2, 2, 2, 1, 1],
+            "key": [0, 0, 0, 1, 1],
+            "google_time_s": [10.0, 10.0, 20.0, 5.0, 5.0],
+        }
+    )
+    result = summarize_edge_temporal_variability(df).set_index("edge_id")
+
+    assert result.loc["a", "unique_google_times"] == 2
+    assert result.loc["a", "google_time_mean_s"] == pytest.approx(40 / 3)
+    assert result.loc["a", "google_time_range_s"] == 10
+    assert not bool(result.loc["a", "zero_variation"])
+    assert bool(result.loc["b", "zero_variation"])
+    assert (result.loc["b", ["u", "v", "key"]] == [2, 1, 1]).all()
