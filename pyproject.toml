@@ -16,6 +16,7 @@ dependencies = [
   "matplotlib>=3.8",
   "pyyaml>=6.0",
   "pyarrow>=15",
+  "tables>=3.9",  # pandas HDF5 reader for the original DCRNN METR-LA file
   "jupyterlab>=4.1",
   "nbformat>=5.10",
   "gudhi>=3.10",

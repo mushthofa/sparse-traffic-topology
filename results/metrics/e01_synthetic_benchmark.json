@@ -1,0 +1,1365 @@
+{
+  "config_sha256": "a2964e1e8dd01962d1cdd890116d47011904e0b0586a6ce6688fd9bfabb6be38",
+  "experiment_id": "E01",
+  "mask_method": "SHA256 of compact UTF-8 JSON [seed,sensor_id], byte ranking; floor(f*N)",
+  "partitions": {
+    "test": {
+      "count": 8,
+      "first_timestamp": "2012-01-02T01:45:00",
+      "last_timestamp": "2012-01-02T02:20:00",
+      "start_inclusive": 32,
+      "stop_exclusive": 40
+    },
+    "train": {
+      "count": 28,
+      "first_timestamp": "2012-01-01T23:00:00",
+      "last_timestamp": "2012-01-02T01:20:00",
+      "start_inclusive": 0,
+      "stop_exclusive": 28
+    },
+    "validation": {
+      "count": 4,
+      "first_timestamp": "2012-01-02T01:25:00",
+      "last_timestamp": "2012-01-02T01:40:00",
+      "start_inclusive": 28,
+      "stop_exclusive": 32
+    }
+  },
+  "runs": [
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 27,
+        "mean": 42.44444444444444,
+        "scale": 1.640535895581489,
+        "standard_deviation_ddof0": 1.640535895581489
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_01"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "protocol": "A",
+      "repetition": 0,
+      "requested_observation_fraction": 0.2,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_02",
+        "SYN_03",
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_01"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 135,
+        "validation": 4
+      },
+      "protocol": "B",
+      "repetition": 0,
+      "requested_observation_fraction": 0.2,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 0,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_02",
+        "SYN_03",
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 54,
+        "mean": 51.22314814814814,
+        "scale": 8.855016584896545,
+        "standard_deviation_ddof0": 8.855016584896545
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "protocol": "A",
+      "repetition": 0,
+      "requested_observation_fraction": 0.4,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 135,
+        "validation": 8
+      },
+      "protocol": "B",
+      "repetition": 0,
+      "requested_observation_fraction": 0.4,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 0,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 81,
+        "mean": 49.28456790123457,
+        "scale": 7.793270962488866,
+        "standard_deviation_ddof0": 7.793270962488866
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "protocol": "A",
+      "repetition": 0,
+      "requested_observation_fraction": 0.6,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 135,
+        "validation": 12
+      },
+      "protocol": "B",
+      "repetition": 0,
+      "requested_observation_fraction": 0.6,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 0,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 108,
+        "mean": 49.05601851851852,
+        "scale": 6.81417451996542,
+        "standard_deviation_ddof0": 6.81417451996542
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "protocol": "A",
+      "repetition": 0,
+      "requested_observation_fraction": 0.8,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 135,
+        "validation": 16
+      },
+      "protocol": "B",
+      "repetition": 0,
+      "requested_observation_fraction": 0.8,
+      "seed": 42,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 0,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 27,
+        "mean": 60.00185185185185,
+        "scale": 0.0014064324108180926,
+        "standard_deviation_ddof0": 0.0014064324108180926
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "protocol": "A",
+      "repetition": 1,
+      "requested_observation_fraction": 0.2,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 135,
+        "validation": 4
+      },
+      "protocol": "B",
+      "repetition": 1,
+      "requested_observation_fraction": 0.2,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 0,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 54,
+        "mean": 57.50092592592592,
+        "scale": 2.5009261236578966,
+        "standard_deviation_ddof0": 2.5009261236578966
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "protocol": "A",
+      "repetition": 1,
+      "requested_observation_fraction": 0.4,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 135,
+        "validation": 8
+      },
+      "protocol": "B",
+      "repetition": 1,
+      "requested_observation_fraction": 0.4,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 0,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 81,
+        "mean": 52.48209876543209,
+        "scale": 7.446081237316346,
+        "standard_deviation_ddof0": 7.446081237316346
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "protocol": "A",
+      "repetition": 1,
+      "requested_observation_fraction": 0.6,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_02",
+        "SYN_03"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 135,
+        "validation": 12
+      },
+      "protocol": "B",
+      "repetition": 1,
+      "requested_observation_fraction": 0.6,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 0,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_02",
+        "SYN_03"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 108,
+        "mean": 51.454166666666666,
+        "scale": 6.743737335483938,
+        "standard_deviation_ddof0": 6.743737335483938
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_03",
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "protocol": "A",
+      "repetition": 1,
+      "requested_observation_fraction": 0.8,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_02"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_03",
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 135,
+        "validation": 16
+      },
+      "protocol": "B",
+      "repetition": 1,
+      "requested_observation_fraction": 0.8,
+      "seed": 43,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 0,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_02"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 27,
+        "mean": 60.00185185185185,
+        "scale": 0.0014064324108180926,
+        "standard_deviation_ddof0": 0.0014064324108180926
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "protocol": "A",
+      "repetition": 2,
+      "requested_observation_fraction": 0.2,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 135,
+        "validation": 4
+      },
+      "protocol": "B",
+      "repetition": 2,
+      "requested_observation_fraction": 0.2,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 0,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 54,
+        "mean": 52.70462962962962,
+        "scale": 7.393677214466065,
+        "standard_deviation_ddof0": 7.393677214466065
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "protocol": "A",
+      "repetition": 2,
+      "requested_observation_fraction": 0.4,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 135,
+        "validation": 8
+      },
+      "protocol": "B",
+      "repetition": 2,
+      "requested_observation_fraction": 0.4,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 0,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 81,
+        "mean": 49.28456790123457,
+        "scale": 7.793270962488866,
+        "standard_deviation_ddof0": 7.793270962488866
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "protocol": "A",
+      "repetition": 2,
+      "requested_observation_fraction": 0.6,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 135,
+        "validation": 12
+      },
+      "protocol": "B",
+      "repetition": 2,
+      "requested_observation_fraction": 0.6,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 0,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 108,
+        "mean": 50.713425925925925,
+        "scale": 7.188616694834534,
+        "standard_deviation_ddof0": 7.188616694834534
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "protocol": "A",
+      "repetition": 2,
+      "requested_observation_fraction": 0.8,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_03"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04",
+        "SYN_05"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 135,
+        "validation": 16
+      },
+      "protocol": "B",
+      "repetition": 2,
+      "requested_observation_fraction": 0.8,
+      "seed": 44,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 0,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_03"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 27,
+        "mean": 60.00185185185185,
+        "scale": 0.0014064324108180926,
+        "standard_deviation_ddof0": 0.0014064324108180926
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "protocol": "A",
+      "repetition": 3,
+      "requested_observation_fraction": 0.2,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 135,
+        "validation": 4
+      },
+      "protocol": "B",
+      "repetition": 3,
+      "requested_observation_fraction": 0.2,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 0,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 54,
+        "mean": 52.70462962962962,
+        "scale": 7.393677214466065,
+        "standard_deviation_ddof0": 7.393677214466065
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "protocol": "A",
+      "repetition": 3,
+      "requested_observation_fraction": 0.4,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 135,
+        "validation": 8
+      },
+      "protocol": "B",
+      "repetition": 3,
+      "requested_observation_fraction": 0.4,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 0,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 81,
+        "mean": 49.28456790123457,
+        "scale": 7.793270962488866,
+        "standard_deviation_ddof0": 7.793270962488866
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "protocol": "A",
+      "repetition": 3,
+      "requested_observation_fraction": 0.6,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 135,
+        "validation": 12
+      },
+      "protocol": "B",
+      "repetition": 3,
+      "requested_observation_fraction": 0.6,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 0,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_03",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 108,
+        "mean": 49.05601851851852,
+        "scale": 6.81417451996542,
+        "standard_deviation_ddof0": 6.81417451996542
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "protocol": "A",
+      "repetition": 3,
+      "requested_observation_fraction": 0.8,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 135,
+        "validation": 16
+      },
+      "protocol": "B",
+      "repetition": 3,
+      "requested_observation_fraction": 0.8,
+      "seed": 45,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 0,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 27,
+        "mean": 48.370370370370374,
+        "scale": 1.7028983603811334,
+        "standard_deviation_ddof0": 1.7028983603811334
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_03"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "protocol": "A",
+      "repetition": 4,
+      "requested_observation_fraction": 0.2,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.2,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 1,
+      "observed_sensor_ids": [
+        "SYN_03"
+      ],
+      "permitted_entries": {
+        "test": 8,
+        "train": 135,
+        "validation": 4
+      },
+      "protocol": "B",
+      "repetition": 4,
+      "requested_observation_fraction": 0.2,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 32,
+        "train": 0,
+        "validation": 16
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 54,
+        "mean": 46.888888888888886,
+        "scale": 2.249828525701843,
+        "standard_deviation_ddof0": 2.249828525701843
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_02",
+        "SYN_03"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "protocol": "A",
+      "repetition": 4,
+      "requested_observation_fraction": 0.4,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.4,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 2,
+      "observed_sensor_ids": [
+        "SYN_02",
+        "SYN_03"
+      ],
+      "permitted_entries": {
+        "test": 16,
+        "train": 135,
+        "validation": 8
+      },
+      "protocol": "B",
+      "repetition": 4,
+      "requested_observation_fraction": 0.4,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 24,
+        "train": 0,
+        "validation": 12
+      },
+      "withheld_sensor_ids": [
+        "SYN_01",
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 81,
+        "mean": 45.407407407407405,
+        "scale": 2.9429882259731746,
+        "standard_deviation_ddof0": 2.9429882259731746
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 81,
+        "validation": 12
+      },
+      "protocol": "A",
+      "repetition": 4,
+      "requested_observation_fraction": 0.6,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 54,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.6,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 3,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03"
+      ],
+      "permitted_entries": {
+        "test": 24,
+        "train": 135,
+        "validation": 12
+      },
+      "protocol": "B",
+      "repetition": 4,
+      "requested_observation_fraction": 0.6,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 16,
+        "train": 0,
+        "validation": 8
+      },
+      "withheld_sensor_ids": [
+        "SYN_04",
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 108,
+        "mean": 49.05601851851852,
+        "scale": 6.81417451996542,
+        "standard_deviation_ddof0": 6.81417451996542
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 108,
+        "validation": 16
+      },
+      "protocol": "A",
+      "repetition": 4,
+      "requested_observation_fraction": 0.8,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 27,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_05"
+      ]
+    },
+    {
+      "actual_observation_fraction": 0.8,
+      "normalization": {
+        "count": 135,
+        "mean": 50.244814814814816,
+        "scale": 6.542119384969059,
+        "standard_deviation_ddof0": 6.542119384969059
+      },
+      "observed_sensor_count": 4,
+      "observed_sensor_ids": [
+        "SYN_01",
+        "SYN_02",
+        "SYN_03",
+        "SYN_04"
+      ],
+      "permitted_entries": {
+        "test": 32,
+        "train": 135,
+        "validation": 16
+      },
+      "protocol": "B",
+      "repetition": 4,
+      "requested_observation_fraction": 0.8,
+      "seed": 46,
+      "valid_heldout_entries": {
+        "test": 8,
+        "train": 0,
+        "validation": 4
+      },
+      "withheld_sensor_ids": [
+        "SYN_05"
+      ]
+    }
+  ],
+  "sensor_ids": [
+    "SYN_01",
+    "SYN_02",
+    "SYN_03",
+    "SYN_04",
+    "SYN_05"
+  ],
+  "source_sha256": {
+    "graph": "6b78c922aed70271523c96684798428dd508f170f3d74188f67c8ba42ac2d7fc",
+    "measurements": "87f35bc9ccc9b26e5b8dd3b9f97dbb68eac7c13e88451c21555895c0141507aa"
+  },
+  "static_graph_available": true,
+  "synthetic": true,
+  "temporal_rounding": "floor train, floor validation, remainder test",
+  "zero_policy": "exclude"
+}

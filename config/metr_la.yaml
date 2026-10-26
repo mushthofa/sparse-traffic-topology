@@ -1,0 +1,29 @@
+source:
+  kind: real
+  version: DCRNN distribution; graph at 602afd9d767d3aa1c9b3eac51710d6aeee12c227
+  measurement_url: https://drive.google.com/open?id=10FOTa6HXPqX8Pf5WRoRwcFnW9BrNZEIX
+  graph_url: https://raw.githubusercontent.com/liyaguang/DCRNN/602afd9d767d3aa1c9b3eac51710d6aeee12c227/data/sensor_graph/adj_mx.pkl
+  speed_units: mph
+  unit_basis: DCRNN paper reports sensor speed in miles per hour; no conversion
+  timezone_assumption: Naive timestamps retained as source wall clock, assumed Los Angeles local time; UTC offsets and DST unresolved; no localization or conversion
+  graph_weight_kind: affinity
+paths:
+  measurements: data/external/metr-la/metr-la.h5
+  graph: data/external/metr-la/adj_mx.pkl
+  hdf_key: null
+  processed: data/processed/metr-la
+# Measurements have no verified publisher checksum here. Record the locally
+# acquired file hash; set measurements below to pin subsequent runs.
+expected_sha256:
+  measurements: null
+  graph: a35687c6e15aa228dc45027b0ed2a0ea0f4ec78f573deb992c595092d12f61b3
+expectations:
+  shape: [34272, 207]
+quality:
+  zero_policy: exclude
+  near_constant_cv: 0.01
+  sampling_interval: 5min
+benchmark:
+  temporal_rates: [0.7, 0.1, 0.2]
+  observation_fractions: [0.2, 0.4, 0.6, 0.8]
+  seeds: [42, 43, 44, 45, 46]

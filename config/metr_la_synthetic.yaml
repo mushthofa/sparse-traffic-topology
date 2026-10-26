@@ -1,0 +1,41 @@
+source:
+  kind: synthetic
+  version: E01 deterministic synthetic fixture v1
+  measurement_url: synthetic://tests/fixtures/metr_la/speeds.csv
+  graph_url: synthetic://tests/fixtures/metr_la/adjacency.csv
+  speed_units: mph
+  unit_basis: Synthetic numbers labeled mph solely for software testing
+  timezone_assumption: Synthetic naive wall clock; not a real METR-LA recording
+  graph_weight_kind: affinity
+paths:
+  measurements: tests/fixtures/metr_la/speeds.csv
+  graph: tests/fixtures/metr_la/adjacency.csv
+  hdf_key: null
+  processed: data/processed/metr-la-synthetic
+expected_sha256:
+  measurements: 87f35bc9ccc9b26e5b8dd3b9f97dbb68eac7c13e88451c21555895c0141507aa
+  graph: 6b78c922aed70271523c96684798428dd508f170f3d74188f67c8ba42ac2d7fc
+expectations:
+  shape:
+  - 40
+  - 5
+quality:
+  zero_policy: exclude
+  near_constant_cv: 0.01
+  sampling_interval: 5min
+benchmark:
+  temporal_rates:
+  - 0.7
+  - 0.1
+  - 0.2
+  observation_fractions:
+  - 0.2
+  - 0.4
+  - 0.6
+  - 0.8
+  seeds:
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46

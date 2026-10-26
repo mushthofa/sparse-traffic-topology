@@ -43,3 +43,13 @@ Thumbs.db
 .vscode/
 .idea/
 *:Zone.Identifier
+
+# E01 local benchmark sources and package build metadata
+/data/external/metr-la/*.h5
+/data/external/metr-la/*.hdf
+/data/external/metr-la/*.hdf5
+/data/external/metr-la/*.pkl
+/data/external/metr-la/*.pickle
+/data/external/metr-la/*.npz
+/data/external/metr-la/*.parquet
+*.egg-info/

@@ -1,0 +1,93 @@
+{
+  "experiment_id": "E01",
+  "graph": {
+    "degree_statistics": {
+      "in_degree": {
+        "25%": 5.5,
+        "50%": 8.0,
+        "75%": 11.0,
+        "count": 207.0,
+        "max": 18.0,
+        "mean": 8.318840579710145,
+        "min": 1.0,
+        "std": 3.9047870308142536
+      },
+      "out_degree": {
+        "25%": 5.0,
+        "50%": 8.0,
+        "75%": 11.0,
+        "count": 207.0,
+        "max": 19.0,
+        "mean": 8.318840579710145,
+        "min": 1.0,
+        "std": 3.8358025462073675
+      },
+      "undirected_degree": {
+        "25%": 9.0,
+        "50%": 14.0,
+        "75%": 17.0,
+        "count": 207.0,
+        "max": 25.0,
+        "mean": 12.68599033816425,
+        "min": 0.0,
+        "std": 5.007077210716942
+      }
+    },
+    "directed_affinity_statistics": {
+      "25%": 0.1940254233777523,
+      "50%": 0.38000501692295074,
+      "75%": 0.7480275928974152,
+      "count": 1722.0,
+      "max": 1.0,
+      "mean": 0.4730439835058203,
+      "min": 0.10008397698402405,
+      "std": 0.31477386485628744
+    },
+    "directed_density_excluding_loops": 0.035528352328690026,
+    "directed_edges_excluding_loops": 1515,
+    "directed_edges_including_loops": 1722,
+    "isolated_nodes_ignoring_loops": 1,
+    "nodes": 207,
+    "source_self_loops": 207,
+    "strong_components": 13,
+    "symmetrization": "max(A, A.T), diagonal zero; no distance conversion",
+    "undirected_affinity_statistics": {
+      "25%": 0.19214275479316711,
+      "50%": 0.35051336884498596,
+      "75%": 0.6192344427108765,
+      "count": 1313.0,
+      "max": 0.9998319745063782,
+      "mean": 0.4189483962175688,
+      "min": 0.10008397698402405,
+      "std": 0.2663120442566023
+    },
+    "undirected_components": 2,
+    "undirected_density_excluding_loops": 0.061582477369729376,
+    "undirected_edges_excluding_loops": 1313,
+    "weak_components": 2,
+    "weight_kind": "affinity"
+  },
+  "measurement_alignment_verified": false,
+  "measurement_quality_verified": false,
+  "scope": "authentic source graph only",
+  "source": {
+    "adj_mx.pkl": {
+      "bytes": 680459,
+      "download_date_utc": null,
+      "license_terms": "DCRNN repository MIT license; see upstream LICENSE",
+      "registered_date_utc": "2026-10-26",
+      "sha256": "a35687c6e15aa228dc45027b0ed2a0ea0f4ec78f573deb992c595092d12f61b3",
+      "url": "https://raw.githubusercontent.com/liyaguang/DCRNN/602afd9d767d3aa1c9b3eac51710d6aeee12c227/data/sensor_graph/adj_mx.pkl",
+      "version": "602afd9d767d3aa1c9b3eac51710d6aeee12c227"
+    },
+    "graph_sensor_ids.txt": {
+      "bytes": 1448,
+      "download_date_utc": null,
+      "license_terms": "DCRNN repository MIT license; see upstream LICENSE",
+      "registered_date_utc": "2026-10-26",
+      "sha256": "3ba026caa2e6263ab0ea54b0fa1b125dbfa7216544cd05313b555e826292b990",
+      "url": "https://raw.githubusercontent.com/liyaguang/DCRNN/602afd9d767d3aa1c9b3eac51710d6aeee12c227/data/sensor_graph/graph_sensor_ids.txt",
+      "version": "602afd9d767d3aa1c9b3eac51710d6aeee12c227"
+    }
+  }
+}
