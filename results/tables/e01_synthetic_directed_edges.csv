@@ -1,0 +1,6 @@
+source_sensor_id,target_sensor_id,affinity
+SYN_01,SYN_01,1.0
+SYN_01,SYN_02,0.8
+SYN_02,SYN_01,0.4
+SYN_02,SYN_03,0.2
+SYN_03,SYN_04,0.5

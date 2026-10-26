@@ -1,0 +1,4 @@
+sensor_id_1,sensor_id_2,max_affinity
+SYN_01,SYN_02,0.8
+SYN_02,SYN_03,0.2
+SYN_03,SYN_04,0.5

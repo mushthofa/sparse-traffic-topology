@@ -77,3 +77,28 @@ schema and edge/time-grid integrity, summarizes temporal log-stress variability,
 compares the sampled road-class distribution with all directed edges in the full snapshot.
 
 See `AGENTS.md` for Codex/agent instructions and `docs/experiment_registry.md` for the planned experiment IDs.
+
+## E01 METR-LA benchmark preparation
+
+E01 implements local DCRNN HDF5/CSV ingestion, explicit graph-ID alignment and
+quality audits, chronological 70/10/20 partitions, five nested sparse-sensor mask
+repetitions, and algorithm-independent held-out metrics. It does not fit models.
+The `tables` dependency reads the original pandas HDF5 format.
+
+```bash
+pip install -e ".[dev]"
+# First obtain metr-la.h5 from the publisher-linked Drive folder (see documentation).
+python scripts/download_metrla.py --measurements /absolute/path/to/metr-la.h5
+python scripts/prepare_metr_la.py --config config/metr_la.yaml --trust-graph-pickle
+python scripts/audit_metr_la.py --config config/metr_la.yaml --trust-graph-pickle
+# Offline software demonstration with explicitly synthetic fixtures:
+python scripts/prepare_metr_la.py --config config/metr_la_synthetic.yaml
+python scripts/audit_metr_la.py --config config/metr_la_synthetic.yaml
+```
+
+See [the E01 benchmark contract](docs/metr_la_benchmark.md) for exact download
+sources/checksums, trusted-file requirements, zero-speed/timezone policies, graph
+semantics, Protocol A/B leakage rules, outputs, tests, and E02 candidates. Full
+measurement acquisition is blocked by the proxy in the current environment;
+committed audit outputs are labeled synthetic and make no real-data claims.
+METR-LA covers its instrumented sensors, not all roads. E00 outputs remain unchanged.

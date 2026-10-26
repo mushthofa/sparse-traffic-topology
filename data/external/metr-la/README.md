@@ -1,8 +1,19 @@
-# METR-LA
+# METR-LA local sources
 
-Planned role: controlled dense benchmark for sparse-reconstruction and topology-fidelity experiments.
+Use the original DCRNN measurement distribution and pinned sensor graph documented
+in [the E01 benchmark contract](../../../docs/metr_la_benchmark.md).
 
-Public dataset record used by this project:
-https://zenodo.org/records/5146275
+Download `metr-la.h5` from the publisher-linked Google Drive folder, then run:
 
-Do not modify source files. Add a `manifest.csv` with filename, source, download date, size, and SHA256 after acquisition.
+```bash
+python scripts/download_metrla.py --measurements /path/to/metr-la.h5
+```
+
+Record known original download dates with `--measurement-download-date YYYY-MM-DD`.
+The helper records URLs, versions, SHA256, sizes, registration dates and known
+original download dates/terms in `manifest.json`. Unknown original dates and
+independent measurement redistribution terms remain explicit. No API credentials
+are needed for local-file ingestion. Keep source files immutable and out of Git.
+
+The previous placeholder referenced Zenodo record 5146275; E01 uses the explicitly
+traceable DCRNN distribution instead and makes no equivalence claim for that record.

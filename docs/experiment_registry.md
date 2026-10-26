@@ -3,7 +3,7 @@
 | ID | Experiment | Primary outputs |
 |---|---|---|
 | E00 | Bandung data audit + route QC | QC table, exclusion report, distributions |
-| E01 | METR-LA dense benchmark preparation | graph + dense signal matrix |
+| E01 | METR-LA sparse-observation benchmark preparation | source/graph audit, chronological partitions, nested sensor masks, evaluation contract |
 | E02 | Bandung baseline reconstruction | Model-A benchmark metrics |
 | E03 | Graph reconstruction CV | MAE/RMSE/R2 by sample density |
 | E04 | Spatial-block / road-class CV | generalization metrics |

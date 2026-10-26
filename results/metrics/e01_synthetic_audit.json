@@ -1,0 +1,229 @@
+{
+  "alignment": {
+    "explicit_permutation_allowed": false,
+    "measurement_ids": [
+      "SYN_01",
+      "SYN_02",
+      "SYN_03",
+      "SYN_04",
+      "SYN_05"
+    ],
+    "permutation_source_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "source_graph_ids": [
+      "SYN_01",
+      "SYN_02",
+      "SYN_03",
+      "SYN_04",
+      "SYN_05"
+    ]
+  },
+  "checksum_verified_against_expected": {
+    "graph": true,
+    "measurements": true
+  },
+  "config_sha256": "a2964e1e8dd01962d1cdd890116d47011904e0b0586a6ce6688fd9bfabb6be38",
+  "configuration": {
+    "benchmark": {
+      "observation_fractions": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "seeds": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "temporal_rates": [
+        0.7,
+        0.1,
+        0.2
+      ]
+    },
+    "expectations": {
+      "shape": [
+        40,
+        5
+      ]
+    },
+    "expected_sha256": {
+      "graph": "6b78c922aed70271523c96684798428dd508f170f3d74188f67c8ba42ac2d7fc",
+      "measurements": "87f35bc9ccc9b26e5b8dd3b9f97dbb68eac7c13e88451c21555895c0141507aa"
+    },
+    "paths": {
+      "graph": "tests/fixtures/metr_la/adjacency.csv",
+      "hdf_key": null,
+      "measurements": "tests/fixtures/metr_la/speeds.csv",
+      "processed": "data/processed/metr-la-synthetic"
+    },
+    "quality": {
+      "near_constant_cv": 0.01,
+      "sampling_interval": "5min",
+      "zero_policy": "exclude"
+    },
+    "source": {
+      "graph_url": "synthetic://tests/fixtures/metr_la/adjacency.csv",
+      "graph_weight_kind": "affinity",
+      "kind": "synthetic",
+      "measurement_url": "synthetic://tests/fixtures/metr_la/speeds.csv",
+      "speed_units": "mph",
+      "timezone_assumption": "Synthetic naive wall clock; not a real METR-LA recording",
+      "unit_basis": "Synthetic numbers labeled mph solely for software testing",
+      "version": "E01 deterministic synthetic fixture v1"
+    }
+  },
+  "data": {
+    "completeness": 0.975,
+    "infinity_count": 2,
+    "invalid_entries": 5,
+    "nan_count": 1,
+    "near_constant_cv_threshold": 0.01,
+    "negative_finite_count": 1,
+    "network_valid_speed_statistics": {
+      "25%": 45.0,
+      "50%": 48.0,
+      "75%": 55.0,
+      "count": 195.0,
+      "max": 60.004,
+      "mean": 50.26193333333334,
+      "min": 40.0,
+      "std": 6.550030086549825
+    },
+    "shape": [
+      40,
+      5
+    ],
+    "timestamps": {
+      "duplicate_excess": 0,
+      "duplicate_rows": 0,
+      "end": "2012-01-02 02:20:00",
+      "expected_interval_seconds": 300.0,
+      "interval_counts_seconds": {
+        "300.0": 38,
+        "600.0": 1
+      },
+      "missing_timestamp_count": 1,
+      "missing_timestamps": [
+        "2012-01-01T23:50:00"
+      ],
+      "monotonic_increasing": true,
+      "nat_count": 0,
+      "nonstandard_intervals": 1,
+      "off_grid_count": 0,
+      "start": "2012-01-01 23:00:00",
+      "timezone": "naive (no offset encoded)"
+    },
+    "total_entries": 200,
+    "valid_entries": 195,
+    "zero_count": 1,
+    "zero_policy": "exclude"
+  },
+  "expected_shape": [
+    40,
+    5
+  ],
+  "expected_shape_matches": true,
+  "experiment_id": "E01",
+  "graph": {
+    "degree_statistics": {
+      "in_degree": {
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 1.0,
+        "count": 5.0,
+        "max": 2.0,
+        "mean": 1.0,
+        "min": 0.0,
+        "std": 0.7071067811865476
+      },
+      "out_degree": {
+        "25%": 0.0,
+        "50%": 1.0,
+        "75%": 2.0,
+        "count": 5.0,
+        "max": 2.0,
+        "mean": 1.0,
+        "min": 0.0,
+        "std": 1.0
+      },
+      "undirected_degree": {
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 2.0,
+        "count": 5.0,
+        "max": 2.0,
+        "mean": 1.2,
+        "min": 0.0,
+        "std": 0.8366600265340756
+      }
+    },
+    "directed_affinity_statistics": {
+      "25%": 0.4,
+      "50%": 0.5,
+      "75%": 0.8,
+      "count": 5.0,
+      "max": 1.0,
+      "mean": 0.5800000000000001,
+      "min": 0.2,
+      "std": 0.31937438845342625
+    },
+    "directed_density_excluding_loops": 0.2,
+    "directed_edges_excluding_loops": 4,
+    "directed_edges_including_loops": 5,
+    "isolated_nodes_ignoring_loops": 1,
+    "nodes": 5,
+    "source_self_loops": 1,
+    "strong_components": 4,
+    "symmetrization": "max(A, A.T), diagonal zero; no distance conversion",
+    "undirected_affinity_statistics": {
+      "25%": 0.35,
+      "50%": 0.5,
+      "75%": 0.65,
+      "count": 3.0,
+      "max": 0.8,
+      "mean": 0.5,
+      "min": 0.2,
+      "std": 0.30000000000000004
+    },
+    "undirected_components": 2,
+    "undirected_density_excluding_loops": 0.3,
+    "undirected_edges_excluding_loops": 3,
+    "weak_components": 2,
+    "weight_kind": "affinity"
+  },
+  "prepared": true,
+  "software": {
+    "networkx": "3.7",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "python": "3.12.14"
+  },
+  "source": {
+    "graph_url": "synthetic://tests/fixtures/metr_la/adjacency.csv",
+    "graph_weight_kind": "affinity",
+    "kind": "synthetic",
+    "measurement_url": "synthetic://tests/fixtures/metr_la/speeds.csv",
+    "speed_units": "mph",
+    "timezone_assumption": "Synthetic naive wall clock; not a real METR-LA recording",
+    "unit_basis": "Synthetic numbers labeled mph solely for software testing",
+    "version": "E01 deterministic synthetic fixture v1"
+  },
+  "source_files": {
+    "graph": "tests/fixtures/metr_la/adjacency.csv",
+    "measurements": "tests/fixtures/metr_la/speeds.csv"
+  },
+  "source_sha256": {
+    "graph": "6b78c922aed70271523c96684798428dd508f170f3d74188f67c8ba42ac2d7fc",
+    "measurements": "87f35bc9ccc9b26e5b8dd3b9f97dbb68eac7c13e88451c21555895c0141507aa"
+  },
+  "synthetic": true
+}
